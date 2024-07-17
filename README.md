@@ -28,9 +28,10 @@ _**Note:** Each variable is explained in the inference.py file._
 
 
 ## Use Own Classifiers
-**To use your own classifier, please follow the following steps:**
-1. Write the code for your classifier architecture inside the **classifier.py** file in the **models** folder.
-2. Now define the object of your classifier in the **classification_inference** method inside the **conditionalDehazing.py** file under the **models** folder.
-3. Finally, define the weights of your classifier inside the **inference.py** file
+**To use your custom classifier, please follow the following steps:**
+1. Write the code for your classifier architecture in the _classifier.py_ file in the _models_ folder.
+2. Now define the object of your classifier in the _classification_inference_ method inside the _conditionalDehazing.py_ file under the _models_ folder.
+3. Finally, define the weights of your classifier inside the _inference.py_ file
    
-**To use your own specialized dehazers, please follow the following steps:**
+**To use your custom specialized dehazers, please follow the following steps:**
+1. 
