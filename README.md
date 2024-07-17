@@ -1,1 +1,1 @@
-## ACM MM 2024
+## HazeSpace2M: A Dataset for Haze Aware Single Image Dehazing
