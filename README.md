@@ -24,3 +24,4 @@ The subsets of the HazeSpace2M dataset are available for download from the follo
 python inference.py --gt_folder <path_to_gt> --hazy_folder <path_to_hazy> --output_dir <output_dir> --classifier <path_to_classifier> --cloudSD <path_to_cloudSD> --ehSD <path_to_ehSD> --fogSD <path_to_fogSD>
 
 ````
+**Note:** Each variable has been explained inside the inference.py file.
