@@ -1,0 +1,7 @@
+torchvision~=0.18.1
+opencv-python~=4.10.0.84
+numpy~=1.24.3
+scikit-image~=0.24.0
+brisque~=0.0.16
+pillow~=10.4.0
+matplotlib~=3.9.1
