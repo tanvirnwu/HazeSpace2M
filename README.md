@@ -5,3 +5,7 @@
 <h4 align="center">| 1. Sungkyunkwan University, Republic of Korea | 2. KFUPM, KSA | 3. UTS, Australia | 4. NIT Rourkela, India |<br></h4>
 
 ----------
+## HazeSpace2M Dataset
+![](./assets/HazeSpace2M.jpg)
+## Haze Aware Dehazing
+![](./assets/pipeline.png)
