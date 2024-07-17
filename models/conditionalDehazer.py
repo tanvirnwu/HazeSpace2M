@@ -4,27 +4,47 @@ from utils import metrics, config
 from PIL import Image
 import torch
 from torchvision import transforms
-import matplotlib.pyplot as plt
 from models import classifier, dehazer
+from utils.helper import ensure_directory_exists, get_class_name_from_index, load_model, preprocess_image, visualize_images
 
-def ensure_directory_exists(directory_path):
-    if not os.path.exists(directory_path):
-        os.makedirs(directory_path)
 
-def TTCDehazeNet(gt_image, hazy_image, dehazers, classifier, output_dir, output_dir_folder="dehazed"):
+def conditionalDehazing(gt_image, hazy_image, dehazers, classifier, output_dir, output_dir_folder="dehazed"):
+    """
+    Perform conditional dehazing on a single image or a batch of images.
+
+    Args:
+        gt_image (str): Path to the ground truth (GT) image or folder.
+        hazy_image (str): Path to the hazy image or folder.
+        dehazers (list): List of paths to the dehazer models.
+        classifier (str): Path to the classifier model.
+        output_dir (str): Directory to save dehazed images.
+        output_dir_folder (str): Subfolder in output directory to save dehazed images. Default is "dehazed".
+    """
     if os.path.isfile(hazy_image):
         predicted_class, _, _ = classification_inference(classifier, hazy_image)
-        dehaze_inference(dehazers, gt_image, hazy_image, predicted_class_name=predicted_class, output_dir=output_dir, output_dir_folder=output_dir_folder)
+        dehaze_inference(dehazers, gt_image, hazy_image, predicted_class_name=predicted_class, output_dir=output_dir,
+                         output_dir_folder=output_dir_folder)
     elif os.path.isdir(hazy_image):
         batch_dehaze_and_evaluate(dehazers, gt_image, hazy_image, classifier, output_dir, output_dir_folder)
     else:
         print('Version 2 can only inference on Single Image or Directory. Please provide a valid path.')
 
-def get_class_name_from_index(index, test_path):
-    classes = sorted(os.listdir(test_path))
-    return classes[index]
 
-def classification_inference(classifier_weight, image_path, test_path=config.test_path_for_class_name, transform=config.val_test_transform):
+
+def classification_inference(classifier_weight, image_path, test_path=config.test_path_for_class_name,
+                             transform=config.val_test_transform):
+    """
+    Perform classification inference to predict the haze type in an image.
+
+    Args:
+        classifier_weight (str): Path to the classifier model.
+        image_path (str): Path to the image to be classified.
+        test_path (str): Path to the test data for class names.
+        transform (callable): Transformation to be applied to the image.
+
+    Returns:
+        tuple: Predicted class name, actual class name, and predicted probability.
+    """
     model = classifier.ResNet152()
     model.load_state_dict(torch.load(classifier_weight, map_location=config.device))
     model.to(config.device)
@@ -43,23 +63,25 @@ def classification_inference(classifier_weight, image_path, test_path=config.tes
     actual_class_name = os.path.basename(os.path.dirname(image_path))
     predicted_class_name = get_class_name_from_index(predicted_idx, test_path)
 
-    # print(f"Actual class: {actual_class_name}")
     print(f"Predicted class: {predicted_class_name}")
     print(f"Predicted probability: {predicted_probability.item()}")
 
     return predicted_class_name, actual_class_name, predicted_probability.item()
 
-def load_model(model_path):
-    model = dehazer.LightDehaze_Net()
-    model.load_state_dict(torch.load(model_path))
-    model.eval()
-    return model
 
-def preprocess_image(image_path):
-    image = Image.open(image_path).convert('RGB')
-    return config.val_test_transform(image).unsqueeze(0)
 
 def dehaze_inference(dehazer_model_names, gt_image, hazy_image, predicted_class_name, output_dir, output_dir_folder):
+    """
+    Perform dehazing inference on a single image.
+
+    Args:
+        dehazer_model_names (list): List of paths to the dehazer models.
+        gt_image (str): Path to the ground truth (GT) image.
+        hazy_image (str): Path to the hazy image.
+        predicted_class_name (str): Predicted class name from the classifier.
+        output_dir (str): Directory to save dehazed images.
+        output_dir_folder (str): Subfolder in output directory to save dehazed images.
+    """
     hazy_image_path = hazy_image
     dehazer_model_path = get_dehazer_model_path(dehazer_model_names, predicted_class_name)
 
@@ -78,7 +100,6 @@ def dehaze_inference(dehazer_model_names, gt_image, hazy_image, predicted_class_
     else:
         gt_image_pil = None
 
-    ncols = 3 if gt_image_pil else 2
     visualize_images(hazy_image, dehazed_image, gt_image_pil, predicted_class_name)
 
     dehazed_image_path = save_dehazed_image(hazy_image_path, dehazed_image, output_dir, output_dir_folder)
@@ -89,7 +110,21 @@ def dehaze_inference(dehazer_model_names, gt_image, hazy_image, predicted_class_
         brisque_value = metrics.calculate_brisque(dehazed_image_path)
         print(f"BRISQUE for {hazy_image_path}: {brisque_value}")
 
-def batch_dehaze_and_evaluate(dehazer_model_names, gt_folder, hazy_folder, classifier_weight, output_dir, output_dir_folder):
+
+
+def batch_dehaze_and_evaluate(dehazer_model_names, gt_folder, hazy_folder, classifier_weight, output_dir,
+                              output_dir_folder):
+    """
+    Perform batch dehazing and evaluation on a directory of images.
+
+    Args:
+        dehazer_model_names (list): List of paths to the dehazer models.
+        gt_folder (str): Path to the folder containing ground truth (GT) images.
+        hazy_folder (str): Path to the folder containing hazy images.
+        classifier_weight (str): Path to the classifier model.
+        output_dir (str): Directory to save dehazed images.
+        output_dir_folder (str): Subfolder in output directory to save dehazed images.
+    """
     psnr_values, ssim_values, mse_values, brisque_values = [], [], [], []
 
     for hazy_image_filename in os.listdir(hazy_folder):
@@ -135,7 +170,19 @@ def batch_dehaze_and_evaluate(dehazer_model_names, gt_folder, hazy_folder, class
         avg_brisque = np.mean(brisque_values)
         print(f"Average BRISQUE: {avg_brisque}")
 
+
+
 def get_dehazer_model_path(dehazer_model_names, predicted_class_name):
+    """
+    Get the path to the dehazer model based on the predicted class name.
+
+    Args:
+        dehazer_model_names (list): List of paths to the dehazer models.
+        predicted_class_name (str): Predicted class name from the classifier.
+
+    Returns:
+        str: Path to the dehazer model.
+    """
     if predicted_class_name == 'Cloud':
         return dehazer_model_names[0]
     elif predicted_class_name == 'EH':
@@ -145,7 +192,21 @@ def get_dehazer_model_path(dehazer_model_names, predicted_class_name):
     else:
         raise ValueError(f'Invalid predicted class name: {predicted_class_name}')
 
+
+
 def save_dehazed_image(hazy_image_path, dehazed_image, output_dir, output_dir_folder):
+    """
+    Save the dehazed image to the specified directory.
+
+    Args:
+        hazy_image_path (str): Path to the hazy image.
+        dehazed_image (PIL.Image.Image): Dehazed image.
+        output_dir (str): Directory to save dehazed images.
+        output_dir_folder (str): Subfolder in output directory to save dehazed images.
+
+    Returns:
+        str: Path where the dehazed image is saved.
+    """
     ensure_directory_exists(output_dir)
     ensure_directory_exists(os.path.join(output_dir, output_dir_folder))
     dehazed_image_filename = os.path.basename(hazy_image_path).split('.')[0] + "_dehazed.jpg"
@@ -153,26 +214,18 @@ def save_dehazed_image(hazy_image_path, dehazed_image, output_dir, output_dir_fo
     dehazed_image.save(dehazed_image_path)
     return dehazed_image_path
 
-def visualize_images(hazy_image, dehazed_image, gt_image, predicted_class_name):
-    ncols = 3 if gt_image else 2
 
-    fig, ax = plt.subplots(1, ncols, figsize=(15, 6))
-    ax[0].imshow(hazy_image)
-    ax[0].set_title('Input Image')
-    ax[0].axis('off')
-
-    ax[1].imshow(dehazed_image)
-    ax[1].set_title('Dehazed Image | Predicted Class: ' + predicted_class_name)
-    ax[1].axis('off')
-
-    if gt_image:
-        ax[2].imshow(gt_image)
-        ax[2].set_title('Ground Truth Image')
-        ax[2].axis('off')
-
-    plt.show()
 
 def evaluate_images(gt_image_path, hazy_image_path, dehazed_image_path, output_dir):
+    """
+    Evaluate the dehazed image against the ground truth image.
+
+    Args:
+        gt_image_path (str): Path to the ground truth (GT) image.
+        hazy_image_path (str): Path to the hazy image.
+        dehazed_image_path (str): Path to the dehazed image.
+        output_dir (str): Directory to save the evaluation results.
+    """
     psnr, ssim = metrics.calculate_psnr_ssim(gt_image_path, hazy_image_path)
     print(f'GT VS Dehazed Image | PSNR: {psnr} | SSIM of : {ssim}')
 

@@ -4,6 +4,13 @@ import torch.nn as nn
 
 class LightDehaze_Net(nn.Module):
 
+	"""
+	  LightDehaze_Net is a neural network model for dehazing images. We use this architecture to train the different Specialized Dehazers (cloudSD, ehSD and fogSD)
+	  to use in our original proposed frameowrk in the conditionalDehazing.py file.
+
+	  Source: https://github.com/hayatkhan8660-maker/Light-DehazeNet
+	"""
+
 	def __init__(self):
 		super(LightDehaze_Net, self).__init__()
 
