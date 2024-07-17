@@ -18,3 +18,9 @@ pip install -r requirements.txt
 ## Dataset Download
 The subsets of the HazeSpace2M dataset are available for download from the following links:
 1. Outdoor | 2. Street | 3. Farmland | 4. Satellite
+
+## Testing
+```
+python inference.py --gt_folder <path_to_gt> --hazy_folder <path_to_hazy> --output_dir <output_dir> --classifier <path_to_classifier> --cloudSD <path_to_cloudSD> --ehSD <path_to_ehSD> --fogSD <path_to_fogSD>
+
+````
