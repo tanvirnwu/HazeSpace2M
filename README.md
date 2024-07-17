@@ -9,3 +9,8 @@
 ![](./assets/HazeSpace2M.jpg)
 ## Haze Aware Dehazing
 ![](./assets/proposedFramework.jpg)
+
+## Dependencies
+```
+pip install -r requirements.txt
+````
