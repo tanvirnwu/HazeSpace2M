@@ -34,4 +34,6 @@ _**Note:** Each variable is explained in the inference.py file._
 3. Finally, define the weights of your classifier inside the _inference.py_ file
    
 **To use your custom specialized dehazers, please follow the following steps:**
-1. 
+1. Write the code for your classifier architecture in the dehazer.py_ file in the _models_ folder.
+2. Now define the object of your dehazer in the _load_model_ method inside the _helper.py_ file under the _utils_ folder.
+3. Finally, define the weights of your classifier inside the _inference.py_ file
