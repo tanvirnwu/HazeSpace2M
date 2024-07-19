@@ -1,8 +1,7 @@
-import os
+import os, torch
 import numpy as np
 from utils import metrics, config
 from PIL import Image
-import torch
 from torchvision import transforms
 from models import classifier, dehazer
 from utils.helper import ensure_directory_exists, get_class_name_from_index, load_model, preprocess_image, visualize_images

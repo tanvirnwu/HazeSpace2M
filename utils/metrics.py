@@ -14,13 +14,11 @@ Functions:
     ensure_directory_exists: Ensures that a directory exists.
 """
 
-import cv2
+import os, cv2
 from skimage.metrics import structural_similarity as ssim
 from torchvision import transforms
 from brisque import BRISQUE
 from PIL import Image
-import torch
-import os
 import numpy as np
 
 def transform_and_save_image(gt_image_path, storage_folder, img_size):

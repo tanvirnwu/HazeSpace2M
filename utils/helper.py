@@ -1,6 +1,5 @@
-import os
+import os, torch
 from models import dehazer
-import torch
 from PIL import Image
 from utils import config
 import matplotlib.pyplot as plt
