@@ -17,7 +17,8 @@ pip install -r requirements.txt
 
 ## Dataset Download
 The subsets of the HazeSpace2M dataset are available for download from the following links:
-1. Outdoor | 2. Street | 3. Farmland | 4. Satellite
+1. **Kaggle:** Outdoor | 2. Street | 3. Farmland | 4. Satellite 
+2. **TeraBox:** Outdoor | 2. Street | 3. Farmland | 4. Satellite
 
 
 ## Pretrained Weights
