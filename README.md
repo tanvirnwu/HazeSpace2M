@@ -24,7 +24,7 @@ The subsets of the HazeSpace2M dataset are available for download from the follo
 ## Pretrained Weights
 All the pre-trained weights of the classifiers and the dehazers are available to download:
 <br>
-| Classifier | cloudSD | ehSD | fogSD |
+| Classifier | ![Specialized Dehazers](https://www.dropbox.com/scl/fo/kc6lnv7gbov0npu2obp4n/AD5zNVhki2x3GH9HA5Lwbqk?rlkey=jzpunuzrkb0a44hh1x1fu44yi&st=7gb5qb67&dl=0) |
 
 ## Testing
 ```
