@@ -46,4 +46,4 @@ _**Note:** Each variable is explained in the inference.py file._
 3. Finally, define the weights of your classifier inside the _**inference.py**_ file
 
 ## HazeSpace2M Folder Structure
-![](./assets/datasetStructure-01.jpg)
+![](./assets/datasetStructure-02.jpg)
