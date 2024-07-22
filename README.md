@@ -24,7 +24,7 @@ The subsets of the HazeSpace2M dataset are available for download from the follo
 ## Pretrained Weights
 All the pre-trained weights of the classifiers and the dehazers are available to download:
 <br>
-| [**Classifier**](https://www.dropbox.com/scl/fo/8yq89dwtzi5oz46m394vt/AFdoA362cTL8-lLLxoITo9w?rlkey=brfwcbcnv4y627elmz21i626w&st=3vaoml2m&dl=0) | [**Specialized Dehazers**](https://www.dropbox.com/scl/fo/kc6lnv7gbov0npu2obp4n/AD5zNVhki2x3GH9HA5Lwbqk?rlkey=jzpunuzrkb0a44hh1x1fu44yi&st=7gb5qb67&dl=0) |
+DropBox: | [**Classifier**](https://www.dropbox.com/scl/fo/8yq89dwtzi5oz46m394vt/AFdoA362cTL8-lLLxoITo9w?rlkey=brfwcbcnv4y627elmz21i626w&st=3vaoml2m&dl=0) | [**Specialized Dehazers**](https://www.dropbox.com/scl/fo/kc6lnv7gbov0npu2obp4n/AD5zNVhki2x3GH9HA5Lwbqk?rlkey=jzpunuzrkb0a44hh1x1fu44yi&st=7gb5qb67&dl=0) |
 
 ## Testing
 ```
@@ -36,14 +36,14 @@ _**Note:** Each variable is explained in the inference.py file._
 
 ## Use Own Classifiers
 **To use your custom classifier, please follow the following steps:**
-1. Write the code for your classifier architecture in the _classifier.py_ file in the _models_ folder.
-2. Now define the object of your classifier in the _classification_inference_ method inside the _conditionalDehazing.py_ file under the _models_ folder.
-3. Finally, define the weights of your classifier inside the _inference.py_ file
+1. Write the code for your classifier architecture in the _**classifier.py**_ file in the _models_ folder.
+2. Now define the object of your classifier in the _**classification_inference**_ method inside the _conditionalDehazing.py_ file under the _models_ folder.
+3. Finally, define the weights of your classifier inside the _**inference.py**_ file
    
 **To use your custom specialized dehazers, please follow the following steps:**
-1. Write the code for your classifier architecture in the dehazer.py_ file in the _models_ folder.
-2. Now define the object of your dehazer in the _load_model_ method inside the _helper.py_ file under the _utils_ folder.
-3. Finally, define the weights of your classifier inside the _inference.py_ file
+1. Write the code for your classifier architecture in the _**dehazer.py**_ file in the _models_ folder.
+2. Now define the object of your dehazer in the _**load_model**_ method inside the _helper.py_ file under the _utils_ folder.
+3. Finally, define the weights of your classifier inside the _**inference.py**_ file
 
 ## HazeSpace2M Folder Structure
 ![](./assets/datasetStructure-01.jpg)
