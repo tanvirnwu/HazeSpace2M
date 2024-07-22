@@ -4,7 +4,7 @@
 <h4 align="center">Md Tanvir Islam<sup>1</sup>, Nasir Rahim<sup>1</sup>, Saeed Anwar<sup>2</sup>, Muhammad Saqib<sup>3</sup>, Sambit Bakshi<sup>4</sup>, Khan Muhammad<sup>1*</sup></h4>
 <h4 align="center">| 1. Sungkyunkwan University, Republic of Korea | 2. KFUPM, KSA | 3. UTS, Australia | 4. NIT Rourkela, India |<br></h4> <br>
 
-_*Corresponding Author_
+<h5 align="center"><em>*Corresponding Author</em></h4> <br>
 
 ----------
 ## HazeSpace2M Dataset
