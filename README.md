@@ -16,16 +16,18 @@ pip install -r requirements.txt
 ````
 
 ## Dataset Download
-The subsets of the HazeSpace2M dataset are available for download from the following links:
+We are preparing the complete dataset formatting with a structural naming convention. We will upload the full dataset as soon as we complete preparing the dataset with correct naming format as we displayed in the last images in this page. 
+<!--The subsets of the HazeSpace2M dataset are available for download from the following links:
 1. **Kaggle:** Outdoor | 2. Street | 3. Farmland | 4. Satellite 
-2. **TeraBox:** Outdoor | 2. Street | 3. Farmland | 4. Satellite
+2. **TeraBox:** Outdoor | 2. Street | 3. Farmland | 4. Satellite -->
 
 
 ## Pretrained Weights
-All the pre-trained weights of the classifiers and the dehazers are available to download:
+We will upload the pre-trained weights very soon.
+<!--All the pre-trained weights of the classifiers and the dehazers are available to download:
 <br>
 DropBox: | [**Classifier**](https://www.dropbox.com/scl/fo/8yq89dwtzi5oz46m394vt/AFdoA362cTL8-lLLxoITo9w?rlkey=brfwcbcnv4y627elmz21i626w&st=3vaoml2m&dl=0) | [**Specialized Dehazers**](https://www.dropbox.com/scl/fo/kc6lnv7gbov0npu2obp4n/AD5zNVhki2x3GH9HA5Lwbqk?rlkey=jzpunuzrkb0a44hh1x1fu44yi&st=7gb5qb67&dl=0) |
-
+-->
 ## Testing
 ```
 python inference.py --gt_folder <path_to_gt> --hazy_folder <path_to_hazy> --output_dir <output_dir> --classifier <path_to_classifier> --cloudSD <path_to_cloudSD> --ehSD <path_to_ehSD> --fogSD <path_to_fogSD>
