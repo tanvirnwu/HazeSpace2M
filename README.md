@@ -66,3 +66,10 @@ If you find our work useful in your research, please consider citing our paper:
   year={2024},
   doi = {10.1145/3664647.3681382}
 }
+
+@article{islam2024hazespace2m,
+  title={HazeSpace2M: A Dataset for Haze Aware Single Image Dehazing},
+  author={Islam, Md Tanvir and Rahim, Nasir and Anwar, Saeed and Saqib, Muhammad and Bakshi, Sambit and Muhammad, Khan},
+  journal={arXiv preprint arXiv:2409.17432},
+  year={2024}
+}
