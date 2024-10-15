@@ -54,8 +54,6 @@ _**Note:** Each variable is explained in the inference.py file._
 
 
 
-![Visitor Count](https://komarev.com/ghpvc/?username=tanvirnwu&repo=HazeSpace2M&style=for-the-badge)
-
 ![Visitor Count](https://komarev.com/ghpvc/?username=tanvirnwu&repo=HazeSpace2M&style=for-the-badge&label=Project%20Views)
 
 
