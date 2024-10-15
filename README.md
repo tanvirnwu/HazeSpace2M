@@ -53,11 +53,6 @@ _**Note:** Each variable is explained in the inference.py file._
 ![](./assets/datasetStructure-02.jpg)
 
 
-![Visitor Count](https://komarev.com/ghpvc/?username=tanvirnwu&repo=HazeSpace2M)
-
-![Visitor Count](https://komarev.com/ghpvc/?username=tanvirnwu&repo=HazeSpace2M&style=flat-square)
-
-![Visitor Count](https://komarev.com/ghpvc/?username=tanvirnwu&repo=HazeSpace2M&style=plastic)
 
 ![Visitor Count](https://komarev.com/ghpvc/?username=tanvirnwu&repo=HazeSpace2M&style=for-the-badge)
 
