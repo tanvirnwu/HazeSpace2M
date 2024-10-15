@@ -53,9 +53,8 @@ _**Note:** Each variable is explained in the inference.py file._
 ![](./assets/datasetStructure-02.jpg)
 
 
-![Visitor Count](https://komarev.com/ghpvc/?username=<your-username>&repo=<your-repo-name>)
-![Visitor Count](https://shields-io-visitor-counter.herokuapp.com/badge?page=<your-username>.<your-repo-name>)
-
+![Visitor Count](https://komarev.com/ghpvc/?tanvirnwu=tanvirnwu&repo=HazeSpace2M)
+![Visitor Count](https://shields-io-visitor-counter.herokuapp.com/badge?page=tanvirnwu.HazeSpace2M)
 
 
 
