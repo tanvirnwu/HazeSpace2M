@@ -5,8 +5,6 @@
 <h4 align="center">Md Tanvir Islam<sup> 1</sup>, Nasir Rahim<sup> 1</sup>, Saeed Anwar<sup> 2</sup>, Muhammad Saqib<sup> 3</sup>, Sambit Bakshi<sup> 4</sup>, Khan Muhammad<sup> 1, *</sup></h4>
 <h4 align="center">| 1. Sungkyunkwan University, South Korea | 2. KFUPM, KSA | 3. UTS, Australia | 4. NIT Rourkela, India |</h4> 
 <h4 align="center">| *Corresponding Author |</h4> <br>
-![Visitor Count](https://komarev.com/ghpvc/?username=tanvirnwu&repo=HazeSpace2M&style=for-the-badge&label=Project%20Views)
-
 ----------
 ## HazeSpace2M Dataset
 ![](./assets/HazeSpace2M.jpg)
@@ -54,7 +52,7 @@ _**Note:** Each variable is explained in the inference.py file._
 ![](./assets/datasetStructure-02.jpg)
 
 
-
+![Visitor Count](https://komarev.com/ghpvc/?username=tanvirnwu&repo=HazeSpace2M&style=for-the-badge&label=Project%20Views)
 
 ## Cite this Paper
 
